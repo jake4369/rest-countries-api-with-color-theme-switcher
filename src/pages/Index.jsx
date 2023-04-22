@@ -1,5 +1,11 @@
+import SearchBar from "../components/SearchBar";
+
 const Index = () => {
-  return <div>Index Page</div>;
+  return (
+    <div className="index-page">
+      <SearchBar />
+    </div>
+  );
 };
 
 export default Index;
