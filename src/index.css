@@ -90,6 +90,7 @@ h1.header__title {
   align-items: center;
   height: 3rem;
   width: 91.4666666667%;
+  max-width: 30rem;
   margin: 0 auto 2.5rem auto;
   background-color: var(--element);
   box-shadow: 0 0.125rem 0.5625rem rgba(0, 0, 0, 0.0532439);
@@ -129,4 +130,56 @@ h1.header__title {
 
 .search-input::placeholder {
   color: var(--input);
+}
+
+/* ========== 
+ COUNTRY CARD
+ ========== */
+
+.index-page__flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 88.8888888889%;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 2.5rem 5.78125%;
+}
+
+.country-card {
+  background-color: var(--element);
+  box-shadow: 0 0 0.4375rem 0.125rem rgba(0, 0, 0, 0.0294384);
+  border-radius: 0.3125rem;
+  width: 16.5rem;
+}
+
+.country-card__flag-img {
+  height: 10rem;
+  width: 100%;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+}
+
+.country-card__text-container {
+  padding: 1.5rem 0 2.875rem 1.5rem;
+}
+
+.country-card__name {
+  font-weight: 800;
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  margin-bottom: 1rem;
+}
+
+.country-card__stat-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.country-card__stat-title:last-of-type {
+  margin-bottom: 0;
+}
+
+.country-card__stat {
+  font-weight: 300;
 }
