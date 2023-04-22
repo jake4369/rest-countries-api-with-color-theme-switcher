@@ -4,7 +4,7 @@ const countriesApi = axios.create({
   baseURL: "https://restcountries.com/v3.1",
 });
 
-export const getAllCountries = async (name = "") => {
+export const getCountriesData = async (name = "") => {
   try {
     const url = name ? `/name/${name}` : "/all";
     const countries = await countriesApi.get(url);
