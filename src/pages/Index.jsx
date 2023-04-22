@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAllCountries } from "../utils/api";
 
 import SearchBar from "../components/SearchBar";
 import CountryCard from "../components/CountryCard";
@@ -6,16 +8,21 @@ import CountryCard from "../components/CountryCard";
 const Index = () => {
   const [allCountries, setAllCountries] = useState([]);
 
+  // Get all countries data
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllCountries(data);
-      });
+    const fetchData = async () => {
+      const data = await getAllCountries();
+      setAllCountries(data);
+    };
+    fetchData();
   }, []);
 
   const allCountryCards = allCountries.map((country) => {
-    return <CountryCard key={country.name.common} country={country} />;
+    return (
+      <Link to={`/details/${country.name.common}`} key={country.name.common}>
+        <CountryCard country={country} />
+      </Link>
+    );
   });
 
   return (
