@@ -7,17 +7,17 @@ import CountryCard from "../components/CountryCard";
 
 const Index = () => {
   const [allCountries, setAllCountries] = useState([]);
+  const [searchedCountry, setSearchedCountry] = useState("");
 
-  // Get all countries data
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAllCountries();
+      const data = await getAllCountries(searchedCountry);
       setAllCountries(data);
     };
     fetchData();
-  }, []);
+  }, [searchedCountry]);
 
-  const allCountryCards = allCountries.map((country) => {
+  const allCountryCards = [...allCountries].map((country) => {
     return (
       <Link to={`/details/${country.name.common}`} key={country.name.common}>
         <CountryCard country={country} />
@@ -27,7 +27,7 @@ const Index = () => {
 
   return (
     <div className="index-page">
-      <SearchBar />
+      <SearchBar setSearchedCountry={setSearchedCountry} />
 
       <div className="index-page__flex-container">{allCountryCards}</div>
     </div>
