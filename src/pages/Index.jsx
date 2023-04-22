@@ -27,7 +27,11 @@ const Index = () => {
 
   return (
     <div className="index-page">
-      <SearchBar setSearchedCountry={setSearchedCountry} />
+      <div className="search__flex-container">
+        <SearchBar setSearchedCountry={setSearchedCountry} />
+
+        <p>Placeholder</p>
+      </div>
 
       <div className="index-page__flex-container">{allCountryCards}</div>
     </div>
