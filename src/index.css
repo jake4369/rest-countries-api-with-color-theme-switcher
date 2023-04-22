@@ -90,11 +90,18 @@ h1.header__title {
 /* ========== 
  SEARCH BAR
  ========== */
+.search__flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 91.4666666667%;
+  margin: 0 auto 2.5rem auto;
+}
+
 .search-form {
   display: flex;
   align-items: center;
   height: 3rem;
-  width: 91.4666666667%;
+  width: 100%;
   max-width: 30rem;
   margin: 0 auto 2.5rem auto;
   background-color: var(--element);
@@ -187,4 +194,67 @@ h1.header__title {
 
 .country-card__stat {
   font-weight: 300;
+}
+
+/* ======================================== 
+ MEDIA QUERIES
+ ======================================== */
+@media (min-width: 48rem) {
+  /* ======================================== 
+  LAYOUT
+  ======================================== */
+
+  /* ========== 
+  HEADER
+  ========== */
+  header {
+    padding: 0 5.55555555556%;
+    margin-bottom: 3rem;
+  }
+
+  h1.header__title {
+    font-size: 1.5rem;
+    line-height: 2.0625rem;
+  }
+
+  .mode-switch__icon {
+    font-size: 1rem;
+    line-height: 1.375rem;
+  }
+
+  .mode-switch__text {
+    font-size: 1rem;
+    line-height: 1.375rem;
+  }
+
+  /* ======================================== 
+  INDEX PAGE
+  ======================================== */
+
+  /* ========== 
+  SEARCH BAR
+  ========== */
+  .search__flex-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 88.8888888889%;
+    margin: 0 auto 3rem auto;
+  }
+
+  .search-form {
+    height: 3.5rem;
+    margin: 0;
+  }
+
+  .search-btn {
+    width: 12.9166666667%;
+    background-size: 1.125rem 1.125rem;
+    background-position: top 1.1875rem right 0.75rem;
+  }
+
+  .search-input {
+    font-size: 14px;
+    width: 87.0833333333%;
+  }
 }
