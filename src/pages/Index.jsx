@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllCountries } from "../utils/api";
+import { getCountriesData } from "../utils/api";
 
 import SearchBar from "../components/SearchBar";
 import CountryCard from "../components/CountryCard";
@@ -11,7 +11,7 @@ const Index = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getAllCountries(searchedCountry);
+      const data = await getCountriesData(searchedCountry);
       setAllCountries(data);
     };
     fetchData();
