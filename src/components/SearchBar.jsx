@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ setSearchedCountry }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {
@@ -9,7 +9,13 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+
+    if (searchTerm !== "") {
+      setSearchedCountry(searchTerm);
+      setSearchTerm("");
+    } else {
+      setSearchedCountry("");
+    }
   };
 
   return (
