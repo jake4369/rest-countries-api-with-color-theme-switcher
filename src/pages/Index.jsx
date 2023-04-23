@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCountriesData } from "../utils/api";
+import { getCountriesData, getCountriesByRegion } from "../utils/api";
 import { LoadedContext } from "../context/LoadingContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { BsChevronDown } from "react-icons/bs";
 
 import SearchBar from "../components/SearchBar";
 import CountryCard from "../components/CountryCard";
@@ -12,17 +13,36 @@ const Index = () => {
   const { isLoaded, setIsLoaded } = useContext(LoadedContext);
   const [allCountries, setAllCountries] = useState([]);
   const [searchedCountry, setSearchedCountry] = useState("");
+  const [region, setRegion] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+
+  const modalDisplay = {
+    display: modalOpen ? "block" : "none",
+  };
+
+  const toggleModalDisplay = () => {
+    setModalOpen((prevState) => !prevState);
+  };
+
+  const handleSearchRegion = (e) => {
+    setRegion(e.target.dataset.region);
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     setIsLoaded(false);
     const fetchData = async () => {
-      const data = await getCountriesData(searchedCountry);
+      let data;
+      if (region) {
+        data = await getCountriesByRegion(region);
+      } else {
+        data = await getCountriesData(searchedCountry);
+      }
       setAllCountries(data);
       setIsLoaded(true);
     };
     fetchData();
-  }, [searchedCountry]);
+  }, [searchedCountry, region]);
 
   const allCountryCards = [...allCountries].map((country) => {
     return (
@@ -36,14 +56,6 @@ const Index = () => {
     );
   });
 
-  const modalDisplay = {
-    display: modalOpen ? "block" : "none",
-  };
-
-  const toggleModalDisplay = () => {
-    setModalOpen((prevState) => !prevState);
-  };
-
   return (
     <div className="index-page">
       <div className="search__flex-container">
@@ -51,17 +63,27 @@ const Index = () => {
 
         <div className="dropdown-container">
           <button className="dropdown-btn" onClick={toggleModalDisplay}>
-            Filter by Region
+            Filter by Region <BsChevronDown />
           </button>
 
           <AnimatePresence>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <ul className="dropdown-modal" style={modalDisplay}>
-                <li data-region="africa">Africa</li>
-                <li data-region="americas">America</li>
-                <li data-region="asia">Asia</li>
-                <li data-region="europe">Europe</li>
-                <li data-region="oceania">Oceania</li>
+                <li data-region="africa" onClick={handleSearchRegion}>
+                  Africa
+                </li>
+                <li data-region="americas" onClick={handleSearchRegion}>
+                  America
+                </li>
+                <li data-region="asia" onClick={handleSearchRegion}>
+                  Asia
+                </li>
+                <li data-region="europe" onClick={handleSearchRegion}>
+                  Europe
+                </li>
+                <li data-region="oceania" onClick={handleSearchRegion}>
+                  Oceania
+                </li>
               </ul>
             </motion.div>
           </AnimatePresence>
