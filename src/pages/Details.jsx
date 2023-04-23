@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { LoadedContext } from "../context/LoadingContext";
 import { BsArrowLeft } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
 import { getCountriesData } from "../utils/api";
@@ -7,15 +8,19 @@ import { getCountriesData } from "../utils/api";
 import InfoMainColumn from "../components/DetailsPage/InfoMainColumn";
 import InfoSubColumn from "../components/DetailsPage/InfoSubColumn";
 import BorderCountries from "../components/DetailsPage/BorderCountries";
+import LoadingSpinner from "../components/Shared/LoadingSpinner";
 
 const Details = () => {
+  const { isLoaded, setIsLoaded } = useContext(LoadedContext);
   const { country_name } = useParams();
   const [country, setCountry] = useState(null);
 
   useEffect(() => {
+    setIsLoaded(false);
     const fetchData = async () => {
       const data = await getCountriesData(country_name);
       setCountry(data[0]);
+      setIsLoaded(true);
     };
     fetchData();
   }, [country_name]);
@@ -28,9 +33,7 @@ const Details = () => {
         </button>
       </Link>
 
-      {country === null ? (
-        <p>Error</p>
-      ) : (
+      {isLoaded && country !== null ? (
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
@@ -56,6 +59,8 @@ const Details = () => {
             </div>
           </motion.div>
         </AnimatePresence>
+      ) : (
+        <LoadingSpinner />
       )}
     </div>
   );

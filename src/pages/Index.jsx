@@ -1,19 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCountriesData } from "../utils/api";
+import { LoadedContext } from "../context/LoadingContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 import SearchBar from "../components/SearchBar";
 import CountryCard from "../components/CountryCard";
+import LoadingSpinner from "../components/Shared/LoadingSpinner";
 
 const Index = () => {
+  const { isLoaded, setIsLoaded } = useContext(LoadedContext);
   const [allCountries, setAllCountries] = useState([]);
   const [searchedCountry, setSearchedCountry] = useState("");
 
   useEffect(() => {
+    setIsLoaded(false);
     const fetchData = async () => {
       const data = await getCountriesData(searchedCountry);
       setAllCountries(data);
+      setIsLoaded(true);
     };
     fetchData();
   }, [searchedCountry]);
@@ -38,7 +43,11 @@ const Index = () => {
         <p>Placeholder</p>
       </div>
 
-      <div className="index-page__flex-container">{allCountryCards}</div>
+      {isLoaded ? (
+        <div className="index-page__flex-container">{allCountryCards}</div>
+      ) : (
+        <LoadingSpinner />
+      )}
     </div>
   );
 };
