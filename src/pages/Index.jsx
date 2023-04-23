@@ -26,6 +26,7 @@ const Index = () => {
 
   const handleSearchRegion = (e) => {
     setRegion(e.target.dataset.region);
+    setModalOpen(false);
   };
 
   useEffect(() => {
