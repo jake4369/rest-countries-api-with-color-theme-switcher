@@ -41,6 +41,36 @@ body {
   background-color: var(--background);
 }
 
+/* ===== LOADING COMPONENTS ===== */
+.loading-spinner {
+  border: 1rem solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #000;
+  width: 7.5rem;
+  height: 7.5rem;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: 0 auto 2rem auto;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* ======================================== 
  LAYOUT
  ======================================== */
@@ -306,7 +336,7 @@ h1.header__title {
   ========== */
   header {
     padding: 0 5.55555555556%;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
   }
 
   h1.header__title {
@@ -335,7 +365,8 @@ h1.header__title {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 88.8888888889%;
+    width: 88.7298611111%;
+    max-width: 79.875rem;
     margin: 0 auto 3rem auto;
   }
 
