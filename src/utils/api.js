@@ -14,3 +14,14 @@ export const getCountriesData = async (name = "") => {
     console.error(error);
   }
 };
+
+export const getCountriesByCode = async (code) => {
+  try {
+    const url = `/alpha/${code}`;
+    const country = await countriesApi.get(url);
+
+    return country.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
