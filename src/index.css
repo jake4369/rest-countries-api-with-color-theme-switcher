@@ -218,6 +218,7 @@ h1.header__title {
   line-height: 1rem;
   margin-bottom: 0.5rem;
   cursor: pointer;
+  width: fit-content;
 }
 
 /* ========== 
