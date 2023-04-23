@@ -25,3 +25,13 @@ export const getCountriesByCode = async (code) => {
     console.error(error);
   }
 };
+
+export const getCountriesByRegion = async (region = "") => {
+  try {
+    const url = region ? `/region/${region}` : "/all";
+    const countries = await countriesApi.get(url);
+    return countries.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
