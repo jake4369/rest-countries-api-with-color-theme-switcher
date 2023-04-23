@@ -12,6 +12,7 @@ const Index = () => {
   const { isLoaded, setIsLoaded } = useContext(LoadedContext);
   const [allCountries, setAllCountries] = useState([]);
   const [searchedCountry, setSearchedCountry] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setIsLoaded(false);
@@ -35,12 +36,36 @@ const Index = () => {
     );
   });
 
+  const modalDisplay = {
+    display: modalOpen ? "block" : "none",
+  };
+
+  const toggleModalDisplay = () => {
+    setModalOpen((prevState) => !prevState);
+  };
+
   return (
     <div className="index-page">
       <div className="search__flex-container">
         <SearchBar setSearchedCountry={setSearchedCountry} />
 
-        <p>Placeholder</p>
+        <div className="dropdown-container">
+          <button className="dropdown-btn" onClick={toggleModalDisplay}>
+            Filter by Region
+          </button>
+
+          <AnimatePresence>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <ul className="dropdown-modal" style={modalDisplay}>
+                <li data-region="africa">Africa</li>
+                <li data-region="americas">America</li>
+                <li data-region="asia">Asia</li>
+                <li data-region="europe">Europe</li>
+                <li data-region="oceania">Oceania</li>
+              </ul>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       {isLoaded ? (
