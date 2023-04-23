@@ -198,9 +198,9 @@ footer {
 }
 
 .dropdown-btn {
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-family: "Nunito Sans";
   font-weight: 400;
   font-size: 0.75rem;
@@ -436,7 +436,7 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 88.7298611111%;
+    width: 90%;
     max-width: 79.875rem;
     margin: 0 auto 3rem auto;
   }
