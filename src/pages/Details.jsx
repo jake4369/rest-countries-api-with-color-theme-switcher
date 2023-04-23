@@ -5,6 +5,7 @@ import { getCountriesData } from "../utils/api";
 
 import InfoMainColumn from "../components/DetailsPage/InfoMainColumn";
 import InfoSubColumn from "../components/DetailsPage/InfoSubColumn";
+import BorderCountries from "../components/DetailsPage/BorderCountries";
 
 const Details = () => {
   const { country_name } = useParams();
@@ -17,8 +18,6 @@ const Details = () => {
     };
     fetchData();
   }, [country_name]);
-
-  console.log(country);
 
   return (
     <div className="details-page">
@@ -44,6 +43,8 @@ const Details = () => {
 
               <InfoSubColumn country={country} />
             </div>
+
+            <BorderCountries country={country} />
           </div>
         </div>
       )}
