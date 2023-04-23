@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCountriesData } from "../utils/api";
+import { motion, AnimatePresence } from "framer-motion";
 
 import SearchBar from "../components/SearchBar";
 import CountryCard from "../components/CountryCard";
@@ -19,9 +20,13 @@ const Index = () => {
 
   const allCountryCards = [...allCountries].map((country) => {
     return (
-      <Link to={`/details/${country.name.common}`} key={country.name.common}>
-        <CountryCard country={country} />
-      </Link>
+      <AnimatePresence key={country.name.common}>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <Link to={`/details/${country.name.common}`}>
+            <CountryCard country={country} />
+          </Link>
+        </motion.div>
+      </AnimatePresence>
     );
   });
 

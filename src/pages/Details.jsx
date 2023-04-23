@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
+import { motion, AnimatePresence } from "framer-motion";
 import { getCountriesData } from "../utils/api";
 
 import InfoMainColumn from "../components/DetailsPage/InfoMainColumn";
@@ -30,23 +31,31 @@ const Details = () => {
       {country === null ? (
         <p>Error</p>
       ) : (
-        <div className="details-page__flex-container">
-          <img
-            src={country.flags.svg || country.flags.png}
-            alt=""
-            className="details-page__flag-img"
-          />
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="details-page__flex-container">
+              <img
+                src={country.flags.svg || country.flags.png}
+                alt=""
+                className="details-page__flag-img"
+              />
 
-          <div className="details-page__info-container">
-            <div className="details-page__column-container">
-              <InfoMainColumn country={country} />
+              <div className="details-page__info-container">
+                <div className="details-page__column-container">
+                  <InfoMainColumn country={country} />
 
-              <InfoSubColumn country={country} />
+                  <InfoSubColumn country={country} />
+                </div>
+
+                <BorderCountries country={country} />
+              </div>
             </div>
-
-            <BorderCountries country={country} />
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       )}
     </div>
   );
