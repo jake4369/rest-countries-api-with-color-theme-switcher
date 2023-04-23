@@ -132,7 +132,6 @@ h1.header__title {
   align-items: center;
   height: 3rem;
   width: 100%;
-  max-width: 30rem;
   margin: 0 auto 2.5rem auto;
   background-color: var(--element);
   box-shadow: 0 0.125rem 0.5625rem rgba(0, 0, 0, 0.0532439);
@@ -172,6 +171,52 @@ h1.header__title {
 
 .search-input::placeholder {
   color: var(--input);
+}
+
+.dropdown-container {
+  width: 12.5rem;
+  position: relative;
+}
+
+.dropdown-btn {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  font-family: "Nunito Sans";
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  text-align: left;
+  color: var(--text);
+  background-color: var(--element);
+  background-size: 0.625rem 0.625rem;
+  background-position: top 1.1875rem right 1.1875rem;
+  box-shadow: 0 0.125rem 0.5625rem rgba(0, 0, 0, 0.0532439);
+  border: none;
+  border-radius: 0.3125rem;
+  padding: 0.875rem 1.375rem 0.875rem 1.5rem;
+  outline: none;
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.dropdown-modal {
+  list-style-type: none;
+  position: absolute;
+  width: 100%;
+  background: var(--element);
+  box-shadow: 0 0.125rem 0.5625rem rgba(0, 0, 0, 0.0532439);
+  border-radius: 0.3125rem;
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
+  z-index: 100;
+  top: 3.25rem;
+}
+
+.dropdown-modal li {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /* ========== 
@@ -284,6 +329,10 @@ h1.header__title {
   margin-bottom: 2rem;
 }
 
+.info__sub-column {
+  width: 15.5625rem;
+}
+
 .country-card__stat-title .languages {
   display: flex;
   align-items: center;
@@ -294,6 +343,7 @@ h1.header__title {
   align-items: center;
   gap: 1rem 3.125%;
   flex-wrap: wrap;
+  width: 350px;
 }
 
 .border-countries__heading {
@@ -372,6 +422,7 @@ h1.header__title {
 
   .search-form {
     height: 3.5rem;
+    width: 30rem;
     margin: 0;
   }
 
@@ -384,6 +435,27 @@ h1.header__title {
   .search-input {
     font-size: 14px;
     width: 87.0833333333%;
+  }
+
+  .index-page__flex-container {
+    width: 88.7298611111%;
+    max-width: 79.875rem;
+  }
+
+  .dropdown-btn {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 1.125rem 1.375rem 1.125rem 1.5rem;
+    height: 3.5rem;
+  }
+
+  .dropdown-modal {
+    top: 3.75rem;
+  }
+
+  .dropdown-modal li {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   /* ======================================== 
