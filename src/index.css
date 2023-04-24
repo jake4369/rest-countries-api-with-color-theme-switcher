@@ -331,6 +331,7 @@ footer {
 
 .details-page__flag-img {
   width: 100%;
+  /* min-height: 229px; */
   max-width: 35rem;
   margin: 0 0 2.75rem 0;
   border-radius: 0.3573rem;
@@ -505,8 +506,8 @@ footer {
   }
 
   .details-page__flag-img {
-    width: 100%;
-    max-width: 43.75rem;
+    width: 60%;
+    max-width: 35rem;
     margin: 0 auto 2.75rem auto;
     border-radius: 10.0057px;
   }
