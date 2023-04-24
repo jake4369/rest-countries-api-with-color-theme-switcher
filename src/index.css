@@ -473,6 +473,7 @@ footer {
   .index-page__flex-container {
     width: 88.7298611111%;
     max-width: 79.875rem;
+    gap: 75px 5.78125%;
   }
 
   .dropdown-btn {
