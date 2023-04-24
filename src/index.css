@@ -99,6 +99,7 @@ h1.header__title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .mode-switch__icon {
