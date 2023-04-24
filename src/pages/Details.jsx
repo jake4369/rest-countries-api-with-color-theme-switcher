@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { LoadedContext } from "../context/LoadingContext";
 import { BsArrowLeft } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
-import { getCountriesData } from "../utils/api";
+import { getCountryData } from "../utils/api";
 
 import InfoMainColumn from "../components/DetailsPage/InfoMainColumn";
 import InfoSubColumn from "../components/DetailsPage/InfoSubColumn";
@@ -18,7 +18,7 @@ const Details = () => {
   useEffect(() => {
     setIsLoaded(false);
     const fetchData = async () => {
-      const data = await getCountriesData(country_name);
+      const data = await getCountryData(country_name);
       setCountry(data[0]);
       setIsLoaded(true);
     };

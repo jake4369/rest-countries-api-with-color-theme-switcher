@@ -21,6 +21,22 @@ const sortData = (dataArr) => {
 
 export const getCountriesData = async (name = "") => {
   try {
+    const url = name ? `/name/${name}` : "/all";
+    const countries = await countriesApi.get(url);
+
+    if (countries.data.length === 0) {
+      throw new Error("Country not found");
+    }
+
+    return sortData(countries.data);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const getCountryData = async (name = "") => {
+  try {
     const url = name ? `/name/${name}?fullText=true` : "/all";
     const countries = await countriesApi.get(url);
 
