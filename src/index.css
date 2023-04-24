@@ -261,6 +261,7 @@ footer {
   background-color: var(--element);
   box-shadow: 0 0 0.4375rem 0.125rem rgba(0, 0, 0, 0.0294384);
   border-radius: 0.3125rem;
+  height: 21rem;
   width: 16.5rem;
 }
 
