@@ -6,7 +6,7 @@ const countriesApi = axios.create({
 
 export const getCountriesData = async (name = "") => {
   try {
-    const url = name ? `/name/${name}` : "/all";
+    const url = name ? `/name/${name}?fullText=true` : "/all";
     const countries = await countriesApi.get(url);
 
     return countries.data;
