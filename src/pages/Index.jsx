@@ -14,18 +14,26 @@ const Index = () => {
   const [allCountries, setAllCountries] = useState([]);
   const [searchedCountry, setSearchedCountry] = useState("");
   const [region, setRegion] = useState("");
+  const [countryFound, setCountryFound] = useState(true);
 
   useEffect(() => {
     setIsLoaded(false);
     const fetchData = async () => {
-      let data;
-      if (region) {
-        data = await getCountriesByRegion(region);
-      } else {
-        data = await getCountriesData(searchedCountry);
+      try {
+        let data;
+        if (region) {
+          data = await getCountriesByRegion(region);
+        } else {
+          data = await getCountriesData(searchedCountry);
+        }
+        setAllCountries(data);
+        setCountryFound(true);
+        setIsLoaded(true);
+      } catch (error) {
+        setIsLoaded(true);
+        setAllCountries([]);
+        setCountryFound(false);
       }
-      setAllCountries(data);
-      setIsLoaded(true);
     };
     fetchData();
   }, [searchedCountry, region]);
@@ -50,7 +58,13 @@ const Index = () => {
       </div>
 
       {isLoaded ? (
-        <div className="index-page__flex-container">{allCountryCards}</div>
+        <>
+          {countryFound ? (
+            <div className="index-page__flex-container">{allCountryCards}</div>
+          ) : (
+            <p className="not-found-message">Country not found</p>
+          )}
+        </>
       ) : (
         <LoadingSpinner />
       )}
