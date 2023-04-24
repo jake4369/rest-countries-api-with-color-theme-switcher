@@ -58,13 +58,13 @@ const Index = () => {
       </div>
 
       {isLoaded ? (
-        <>
+        <div>
           {countryFound ? (
             <div className="index-page__flex-container">{allCountryCards}</div>
           ) : (
             <p className="not-found-message">Country not found</p>
           )}
-        </>
+        </div>
       ) : (
         <LoadingSpinner />
       )}
