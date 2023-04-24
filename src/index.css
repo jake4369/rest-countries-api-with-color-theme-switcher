@@ -258,7 +258,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   width: 88.8888888889%;
-  margin: 0 auto;
+  margin: 0 auto 2.8125rem auto;
   justify-content: center;
   gap: 2.5rem 5.78125%;
 }
