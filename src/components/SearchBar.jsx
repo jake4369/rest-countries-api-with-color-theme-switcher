@@ -20,7 +20,10 @@ const SearchBar = ({ setSearchedCountry }) => {
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
-      <button className="search-btn"></button>
+      <button
+        className="search-btn"
+        aria-label="Click to search for countries"
+      ></button>
       <input
         type="text"
         className="search-input"
