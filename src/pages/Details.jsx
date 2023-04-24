@@ -26,7 +26,7 @@ const Details = () => {
   }, [country_name]);
 
   return (
-    <div className="details-page">
+    <main className="details-page">
       <Link to="/">
         <button className="back-btn">
           <BsArrowLeft className="back-btn__arrow" /> Back
@@ -62,7 +62,7 @@ const Details = () => {
       ) : (
         <LoadingSpinner />
       )}
-    </div>
+    </main>
   );
 };
 

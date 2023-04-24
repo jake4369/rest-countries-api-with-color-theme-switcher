@@ -51,7 +51,7 @@ const Index = () => {
   });
 
   return (
-    <div className="index-page">
+    <main className="index-page">
       <div className="search__flex-container">
         <SearchBar setSearchedCountry={setSearchedCountry} />
         <DropdownMenu setRegion={setRegion} />
@@ -68,7 +68,7 @@ const Index = () => {
       ) : (
         <LoadingSpinner />
       )}
-    </div>
+    </main>
   );
 };
 
