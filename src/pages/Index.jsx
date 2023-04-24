@@ -44,7 +44,20 @@ const Index = () => {
     fetchData();
   }, [searchedCountry, region]);
 
-  const allCountryCards = [...allCountries].map((country) => {
+  const sortedData = allCountries.sort((a, b) => {
+    const countryA = a.name.common;
+    const countryB = b.name.common;
+
+    if (countryA < countryB) {
+      return -1;
+    }
+    if (countryA > countryB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  const allCountryCards = sortedData.map((country) => {
     return (
       <AnimatePresence key={country.name.common}>
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
